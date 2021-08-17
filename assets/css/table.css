@@ -1,0 +1,28 @@
+@media print{
+  .hidden-print {display:none;}
+  
+ table {
+  font-family: Arial;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+ table td,  table th {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: middle;
+  font-size: 10px;
+}
+
+ table th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #173F5F;
+  color: white;
+}
+}
+
+#printSectionId2, img{
+  width: 40px; height: 40px;
+}

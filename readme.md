@@ -18,6 +18,6 @@ Employee 1
  - password : 123
 
 Employee 2
- - username: staff
+ - username: steff
  - password: 123
 *

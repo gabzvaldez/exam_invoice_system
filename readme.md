@@ -12,5 +12,12 @@
 // For manual and instructions kindy see attached link below:
 https://drive.google.com/drive/folders/1bQZEe5FEwA_LsInoM2p3RBPTVP7NtBuJ?usp=sharing
 
+user credentials:
+Employee 1
+ - username: john
+ - password : 123
 
+Employee 2
+ - username: staff
+ - password: 123
 *

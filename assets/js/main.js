@@ -1,4 +1,4 @@
-angular.module('mainApp', ['mainApp.controllers','mainApp.services','mainApp.directive'])
+angular.module('mainApp', ['mainApp.controllers','mainApp.services','mainApp.filter','mainApp.directive'])
 .directive('numberInput', function($filter) {
   return {
     require: 'ngModel',

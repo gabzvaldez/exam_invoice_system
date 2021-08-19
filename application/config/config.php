@@ -24,7 +24,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |
 */
 // $config['base_url'] = 'https://'.$_SERVER['HTTP_HOST'].'/creditclaims';
- $config['base_url'] = 'http://'.$_SERVER['HTTP_HOST'].'/rjmed';
+ $config['base_url'] = 'http://'.$_SERVER['HTTP_HOST'].'/invoice_sys';
  // $config['base_url'] = 'https://[::1]/finance';
 
 // $config['base_url'] = 'https://[::1]/leave_sys';

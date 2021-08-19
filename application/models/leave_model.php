@@ -133,20 +133,13 @@ class Leave_model extends CI_Model {
         return $query;
     }
 
-    public function daily_report1($datefrom, $dateto){
-        $q1 = $this->db->query("SELECT tbl_transactions.date, tbl_transactions.orderno, tbl_transactions.customer, tbl_inventory.item_description, tbl_inventory.lot_no, tbl_inventory.expiry_date, tbl_transactions.qty_issued from tbl_transactions INNER JOIN tbl_inventory ON tbl_transactions.item_id = tbl_inventory.id 
-        WHERE tbl_transactions.date >= '".$datefrom."' AND tbl_transactions.date <= '".$dateto."' ORDER BY tbl_inventory.item_description");
+    public function daily_report_stocks($datefrom, $dateto){
+        $q1 = $this->db->query("SELECT tbl_transactions.date, tbl_transactions.orderno, tbl_inventory.item_description, tbl_transactions.qty_issued from tbl_transactions INNER JOIN tbl_inventory ON tbl_transactions.item_id = tbl_inventory.id 
+        WHERE tbl_transactions.date >= '".$datefrom."' AND tbl_transactions.date <= '".$dateto."' GROUP BY tbl_transactions.tid,tbl_transactions.date ORDER BY tbl_transactions.date");
         $query = $q1->result(); 
         return $query;
     }
     
-//    public function daily_report_meds_stock_in($datefrom, $dateto){
-//         $q1 = $this->db->query("SELECT *, tbl_stocks.stock_in as s_in, sum(tbl_stocks.quantity) as tot_qty from tbl_stocks INNER JOIN tbl_inventory ON tbl_inventory.id = tbl_stocks.item_id
-// WHERE tbl_stocks.stock_in >= '".$datefrom."' AND tbl_stocks.stock_in <= '".$dateto."' 
-// group by tbl_stocks.stock_in, tbl_stocks.item_id");
-//         $query = $q1->result(); 
-//         return $query;
-//     }
 
     public function daily_report_meds_stock_in($datefrom, $dateto){
         $q1 = $this->db->query("SELECT * FROM tbl_inventory WHERE stock_in >= '".$datefrom."' AND stock_in <= '".$dateto."'
@@ -166,8 +159,14 @@ ORDER BY tbl_transactions.date asc");
         return $query;
     }
 
-    public function monthly_report_financial(){
-        $q1 = $this->db->query("SELECT Month(tbl_transactions.date), sum(tbl_transactions.total_amount) from tbl_transactions INNER JOIN tbl_inventory ON tbl_transactions.item_id = tbl_inventory.id WHERE tbl_transactions.date >= '2019-01-11' AND tbl_transactions.date <= '2019-12-31' group by month(tbl_transactions.date) ");
+    public function monthly_report_financial($year){
+        $q1 = $this->db->query("SELECT Month(tbl_transactions.date) as m, sum(tbl_transactions.total_amount) as tot from tbl_transactions INNER JOIN tbl_inventory ON tbl_transactions.item_id = tbl_inventory.id WHERE year(tbl_transactions.date) = '".$year."'  group by month(tbl_transactions.date) ORDER BY tbl_transactions.date ");
+        $query = $q1->result();
+        return $query;
+    }
+
+    public function yearly_report_financial(){
+        $q1 = $this->db->query("SELECT year(tbl_transactions.date) as y, sum(tbl_transactions.total_amount) as tot from tbl_transactions INNER JOIN tbl_inventory ON tbl_transactions.item_id = tbl_inventory.id group by year(tbl_transactions.date)");
         $query = $q1->result();
         return $query;
     }
@@ -198,6 +197,11 @@ ORDER BY tbl_transactions.date asc");
         return $query->row();
     }
 
+    public function get_cust($id){
+        $this->db->where('cid', $id);
+        $query =  $this->db->get('tbl_customers');    
+        return $query->row();
+    }
     function delete_orderno($id){
         $this->db->where('tid',$id);
         $this->db->delete('tbl_transactions');
@@ -205,11 +209,6 @@ ORDER BY tbl_transactions.date asc");
         return $res;
     }
 
-
-     // $this->db->select('user_id, COUNT(user_id) as total');
-     // $this->db->group_by('user_id'); 
-     // $this->db->order_by('total', 'desc'); 
-     // $this->db->get('tablename', 10);
 }
 
 // $this->db->distinct('OBR_NUM');

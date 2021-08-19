@@ -42,14 +42,14 @@ class Admin extends CI_Controller {
         }
     }
 
-    public function orders()
+    public function invoices()
     {
         if($this->session->userdata('is_logged_in') == 1 && $this->session->userdata('role') == "admin"){
             
             $data['role'] = $this->session->userdata('role');
 
             $this->load->view('templates/header',$data);
-            $this->load->view('pages/orders');
+            $this->load->view('pages/invoice');
             $this->load->view('templates/footer');
         }else{
             redirect(base_url()."Main");
@@ -128,7 +128,7 @@ class Admin extends CI_Controller {
 
     }
 
-    public function medicines(){
+    public function products(){
         // var_dump($this->session->all_userdata());
             $data['role'] = $this->session->userdata('role');
 
@@ -137,7 +137,7 @@ class Admin extends CI_Controller {
                 'dept' => $this->session->userdata('dept')
             );
             $this->load->view('templates/header', $data);
-            $this->load->view('pages/medicines');
+            $this->load->view('pages/products');
             $this->load->view('templates/footer');
         }else{
             redirect(base_url('main/'));
@@ -155,7 +155,7 @@ class Admin extends CI_Controller {
                 'dept' => $this->session->userdata('dept')
             );
             $this->load->view('templates/header', $data);
-            $this->load->view('pages/medicines_in');
+            $this->load->view('pages/stock_in');
             $this->load->view('templates/footer');
         }else{
             redirect(base_url('main/'));

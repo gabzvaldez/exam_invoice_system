@@ -3,7 +3,7 @@
 <html ng-app="mainApp">
 	<head lang="en">
 	  <meta charset="utf-8">
-	  <title>RJ MED</title>
+	  <title>ABC Hardware Store</title>
 
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/bootstrap.min.css" media="all">
     <!-- <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/modal.css"> -->
@@ -25,7 +25,8 @@
 	<script type="text/javascript" src="<?php echo base_url(); ?>assets/js/main.js"></script>
 	<script type="text/javascript" src="<?php echo base_url(); ?>assets/js/services.js"></script>
   <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/controllers.js"></script>
-	<script type="text/javascript" src="<?php echo base_url(); ?>assets/js/directive.js"></script>
+  <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/directive.js"></script>
+	<script type="text/javascript" src="<?php echo base_url(); ?>assets/js/filter.js"></script>
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.7/css/select2.min.css" rel="stylesheet" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.7/js/select2.min.js"></script>
   <!-- <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.min.css'> -->
@@ -43,7 +44,7 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>                        
             </button>
-            <a class="navbar-brand" style="font-style: bold;" href="<?php echo base_url(); ?>Admin/add_order">RJ Med and Pharma</a>
+            <a class="navbar-brand" style="font-style: bold;" href="<?php echo base_url(); ?>Admin/add_order">ABC Hardware Store</a>
           </div>
           <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav">
@@ -51,8 +52,8 @@
               <li><a href="<?php echo base_url(); ?>Staff">Home</a></li>
               <?php }else{ ?>
               <!-- <li><a href="<?php echo base_url(); ?>Admin/add_bregistry">Add Registry</a></li> -->
-              <li><a href="<?php echo base_url(); ?>Admin/orders">Orders</a></li>
-              <li><a href="<?php echo base_url(); ?>Admin/medicines">Medicines</a></li>
+              <li><a href="<?php echo base_url(); ?>Admin/invoices">Invoices</a></li>
+              <li><a href="<?php echo base_url(); ?>Admin/products">Products</a></li>
                <li><a href="<?php echo base_url(); ?>Report">Reports</a></li>
               <?php } ?>
               <!-- <li><a href="#/claims">Leave</a></li> -->

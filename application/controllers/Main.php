@@ -21,17 +21,6 @@ class Main extends CI_Controller {
 		// }
 	}
 
-	// public function login()
-	// {
-	// 	if($this->session->userdata('is_logged_in') != 1 && $this->session->userdata('role') != "staff"){
-	// 		$this->load->view('templates/login_header');
-	// 		$this->load->view('login');
-	// 		$this->load->view('templates/login_footer');
-	// 	}else{
-	// 		redirect(base_url()."".$this->session->userdata('role'));
-	// 	}
-	// }
-
 	public function login()
 	{
 			$this->load->view('templates/login_header');

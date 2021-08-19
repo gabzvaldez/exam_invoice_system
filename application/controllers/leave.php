@@ -25,16 +25,6 @@ class Leave extends CI_Controller {
     {
         $data = json_decode(file_get_contents('php://input'),true);
         $count = count($data['items']);
-        // $count = count((array) $data['items']);
-        // if (is_array($c)) {
-        //             $count = count($c);
-        //             // return $obj;
-        //        } else {
-        //         // return $obj;
-        //         $count = 0;
-        //        }
-        // print_r($count);
-
         
         for($i=0; $i<$count; $i++) {
             $data2 = array(
@@ -42,7 +32,7 @@ class Leave extends CI_Controller {
                 'customer' => $data['details']['customer'],
                 'orderno' => $data['details']['orderno'],
                 'address' => $data['details']['address'],
-                'type' => $data['details']['type'],
+                // 'type' => $data['details']['type'],
                 'date' => $data['details']['date'],
                 'total_amount' => $data['items'][$i]['total_amount'],
                 'qty_issued' => $data['items'][$i]['qty_issued'],
@@ -51,7 +41,6 @@ class Leave extends CI_Controller {
 
                  $medsz = $this->leave_model->get_spec_meds($data['items'][$i]['item_id']);
                  $rem =  $medsz->quantity-$data['items'][$i]['qty_issued'];
-                // //  var_dump($medsz);
                  $q = $this->leave_model->update_quantity($data['items'][$i]['item_id'],$rem);
                  $result = $this->leave_model->insert_transaction($data2);
         }
@@ -88,7 +77,7 @@ class Leave extends CI_Controller {
     {
         $data = json_decode(file_get_contents('php://input'),true);
         $count = count($data['items']);
-        $unit_cost = 0;
+        // $unit_cost = 0;
             // $data2 = array(
             //     'lot_no' => $data['lot_no'],
             //     'item_description' => $data['item_description'],
@@ -103,11 +92,10 @@ class Leave extends CI_Controller {
             // echo json_encode($result);
             for($i=0; $i<$count; $i++) {
                         $data2 = array(
-                            'lot_no' => $data['items'][$i]['lot_no'],
+                            'unit_cost' => $data['items'][$i]['unit_cost'],
                             'item_description' => $data['items'][$i]['item_description'],
-                            'expiry_date' => $data['items'][$i]['expiry_date'],
                             'quantity' => $data['items'][$i]['quantity'],
-                            'unit_cost' => $unit_cost,
+                            // 'unit_cost' => $unit_cost,
                             'sid' => $data['items'][$i]['sid'],
                             'stock_in' => $data['items'][$i]['stock_in']
                         );
@@ -124,6 +112,14 @@ class Leave extends CI_Controller {
         echo json_encode($result);
     }
 
+    public function get_cust()
+    {
+        $data = json_decode(file_get_contents('php://input'),true);
+        
+            $result = $this->leave_model->get_cust($data['id']);
+        echo json_encode($result);
+    }
+
     public function get_sspecific_order()
     {
         $data = json_decode(file_get_contents('php://input'),true);
@@ -137,9 +133,8 @@ class Leave extends CI_Controller {
         $data = json_decode(file_get_contents('php://input'),true);
 
             $data2 = array(
-                'lot_no' => $data['lot_no'],
                 'item_description' => $data['item_description'],
-                'expiry_date' => $data['expiry_date'],
+                'sid' => $data['sid'],
                 'quantity' => $data['quantity'],
                 'stock_in' => $data['stock_in'],
                 'unit_cost' => $data['unit_cost']

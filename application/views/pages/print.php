@@ -2,7 +2,7 @@
 <html ng-app="mainApp">
   <head lang="en">
     <meta charset="utf-8">
-    <title>RJ MED</title>
+    <title>ABC Hardware Store</title>
 
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/bootstrap.min.css" media="all">
     <!-- <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/modal.css"> -->
@@ -63,20 +63,21 @@
 
   
   <div class="column">
-    <h2>Customer : <?php echo $content[0]->customer; ?></h2>
+    <h2>Invoice Receipt no : <?php echo $content[0]->orderno; ?></h2>
     <!-- <h2>Address : <?php echo $content[0]->address; ?></h2> -->
     <!-- <p>paragraph text</p> -->
   </div>
   <div class="column2">
     <!-- <h2>Date : <?php echo $content[0]->date; ?></h2> -->
     <!-- <h2>Terms : <?php echo $content[0]->terms; ?></h2> -->
+    <h2>Customer : <?php echo $content[0]->customer; ?></h2>
     <!-- <p>paragraph text</p> -->
   </div>
   <table class="table">
         <tr>
           <th colspan="2" style="text-align: center;padding: 0px;border: solid 2px black;" >Description</th>
-          <th colspan="2" style="text-align: center;padding: 0px;border: solid 2px black; " >Lot No.</th>
-          <th colspan="2" style="text-align: center;padding: 0px;border: solid 2px black; " >Expiry</th>
+          <!-- <th colspan="2" style="text-align: center;padding: 0px;border: solid 2px black; " >Lot No.</th> -->
+          <!-- <th colspan="2" style="text-align: center;padding: 0px;border: solid 2px black; " >Expiry</th> -->
           <th colspan="2" style="text-align: center;padding: 0px;border: solid 2px black; " >Quantity</th>
           <th colspan="2" style="text-align: center;padding: 0px;border: solid 2px black; " >Unit price</th>
           <th colspan="2" style="text-align: center;padding: 0px;border: solid 2px black; " >Discount</th>
@@ -85,8 +86,8 @@
   <?php foreach ($content as $content) : ?>
         <tr>
           <td colspan="2" style=" font-size: 13px; text-align: left;padding: 5px;border: solid 1px black;"><?php echo $content->item_description; ?></td>
-          <td colspan="2" style=" font-size: 13px;text-align: center;padding: 5px ;border: solid 1px black; "><?php echo $content->lot_no ?></td>
-          <td colspan="2" style=" font-size: 13px;text-align: center;padding: 5px;border: solid 1px black; "><?php echo date("m/y"); ?></td>
+          <!-- <td colspan="2" style=" font-size: 13px;text-align: center;padding: 5px ;border: solid 1px black; "><?php echo $content->lot_no ?></td> -->
+          <!-- <td colspan="2" style=" font-size: 13px;text-align: center;padding: 5px;border: solid 1px black; "><?php echo date("m/y"); ?></td> -->
           <td colspan="2" style=" font-size: 13px;text-align: center;padding: 5px;border: solid 1px black; "><?php echo $content->qty_issued; ?></td>
           <td colspan="2" style=" font-size: 13px;text-align: center;padding: 5px;border: solid 1px black; "><?php echo $content->unit_cost; ?></td>
           <td colspan="2" style=" font-size: 13px;text-align: center;padding: 5px;border: solid 1px black; "><?php echo $content->discount; ?>%</td>
@@ -100,13 +101,12 @@
           <td colspan='2' style='text-align: center;padding: 5px;border: solid 1px black; '>&nbsp</td>
           <td colspan='2' style='text-align: center;padding: 5px;border: solid 1px black; '>&nbsp</td>
           <td colspan='2' style='text-align: center;padding: 5px;border: solid 1px black; '>&nbsp</td>
-          <td colspan='2' style='text-align: center;padding: 5px;border: solid 1px black; '>&nbsp</td>
-          <td colspan='2' style='text-align: center;padding: 5px;border: solid 1px black; '>&nbsp</td>
          </tr>" ?>
     <?php endfor; ?>
     <tr>
-          <td colspan='12' style='text-align: center;padding: 10px;border: solid 1px black; text-align: left;'>TOTAL GROSS</td>
-          <td colspan='14' style='text-align: center;padding: 10px;border: solid 1px black; '><?php echo number_format($x,2); ?></td>
+          <td colspan='8' style='text-align: center;padding: 10px;border: solid 1px black; text-align: left;'>TOTAL GROSS</td>
+          <td colspan='14' style='text-align: center;padding: 10px;border: solid 1px black; color: red; 
+        font-weight: bold;'><?php echo number_format($x,2); ?></td>
     </tr>
 
 </table>

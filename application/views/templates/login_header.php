@@ -28,4 +28,3 @@
 	
 	</head>
 	<body class="b1">
-	<?php echo base_url();?>

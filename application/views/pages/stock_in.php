@@ -3,6 +3,7 @@
   <!-- <h2 class="pull-left">Order No.{{inv.orderno}}</h2> -->
   <!-- <input type="text" ng-model="inv.orderno" value="{{inv.orderno}}"> -->
 </div>
+<h2>Add Product</h2>
             <!-- <p><?php echo $role; ?></p> -->
   <br>
         <div class="col-md-6">
@@ -15,32 +16,37 @@
         <label>Date : </label>
         <input type="date" class="form-control" ng-model="med.stock_in">
         <br>
-
         </div>
         <!-- <br> -->
-        <div class="col-md-6">
+           <div class="col-md-6">
         <label>Item Description : </label>
             <input type="text" class="form-control" ng-model="med.item_description">
         </div>
+        <hr>
+        <div class="col-md-3">
+        <label>Unit cost : </label>
+            <input type="text" class="form-control" ng-model="med.unit_cost">
+        </div>
 
-        <div class="col-md-6">
+
+<!--         <div class="col-md-6">
         <label>Lot No. : </label>
             <input
              type="text" class="form-control" ng-model="med.lot_no">
              <br>
-        </div>
+        </div> -->
 
-        <div class="col-md-6">
+       <!--  <div class="col-md-6">
             <label>Expiry Date : </label>
             <input type="date" class="form-control" ng-model="med.expiry_date">
-        </div>
+        </div> -->
 
         <!-- <div class="col-md-6">
         <label>Price: </label>
         <input type="number" class="form-control" ng-model="med.unit_cost">
         </div> -->
 
-        <div class="col-md-6">
+        <div class="col-md-3">
             <label>Quantity: </label>
             <input type="number" class="form-control" ng-model="med.quantity">
             <br>
@@ -57,20 +63,20 @@
           <tr>
           <th></th>
             <th style="width: 40%;">Description</th>
-            <th>Lot No.</th>
+            <th>Unit Cost</th>
             <th>Quantity</th>
-            <th>Expiry </th>
+            <!-- <th>Expiry </th> -->
             <!-- <th>Quantity Issued</th> -->
             <!-- <th>Unit Price</th> -->
           </tr>
         </thead>
         <tbody>
           <tr ng-repeat="item in items">
-          <td style="text-align: center"><button class="btn btn-danger" ng-click="rem(items)">-</button></td>
+          <td style="text-align: center"><button class="btn btn-danger" title="Remove Item" ng-click="rem(items)"><i class="fa fa-times"></i></button></td>
             <td colspan="">{{item.item_description}}</td>                    
-            <td>{{item.lot_no}}</td>
+            <td>{{item.unit_cost}}</td>
             <td>{{item.quantity}}</td>
-            <td>{{item.expiry_date}}</td>
+            <!-- <td>{{item.expiry_date}}</td> -->
             <!-- <td>{{item.unit_cost}}</td> -->
           </tr>
           <!-- <tr>

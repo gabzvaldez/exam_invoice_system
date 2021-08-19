@@ -4,6 +4,8 @@
     <h3 style="float: ">search :</h3>
     <input style="width: 200px;" type="text" ng-model="hanap" class="form-control">
     </div> -->
+          <h1>Products</h1>
+<hr>
     <div style="white-space:nowrap">
     <label for="id1">Search :</label>
     <input type="text" ng-model="hanap" id="id1"/>
@@ -21,8 +23,8 @@
             <!-- <th class="hidden-print"></th> -->
             <th></th>
             <th style="width: 40%;">Description</th>
-            <th>Lot No.</th>
-            <th>Expiry </th>
+            <!-- <th>Lot No.</th> -->
+            <!-- <th>Expiry </th> -->
             <th>Quantity</th>
             <!-- <th>Quantity Issued</th> -->
             <th>Unit Price</th>
@@ -40,8 +42,8 @@
           <!-- <a ng-click="get_spec_meds(med.id)" data-toggle='modal' data-target='#add_stockModal' class="btn btn-success" style="text-align: center;"><i class='fa fa-plus'></i>&nbsp</a> -->
           </td>
             <td colspan="">{{med.item_description}}</td>
-            <td>{{med.lot_no}}</td>
-            <td>{{med.expiry_date}}</td>
+            <!-- <td>{{med.lot_no}}</td> -->
+            <!-- <td>{{med.expiry_date}}</td> -->
             <td>{{med.quantity}}</td>
             <!-- <td>{{med.}}</td> -->
             <td>{{med.unit_cost | number : 2}}</td>
@@ -112,15 +114,13 @@
               <label>Item description : </label>
               <input type="text" class="form-control" ng-model="e_meds.item_description">
               <br>
-              <label>Lot No. : </label>
-                <input type="text" class="form-control" ng-model="e_meds.lot_no">
-              <br>
+             
               <div class="col-md-6">
-                <label>Date stock in : </label>
-                <input type="date" class="form-control" ng-model="e_meds.stock_in">
+                <label>Stock in no. : </label>
+                <input type="text" class="form-control" ng-model="e_meds.sid">
                 <br>
-                 <label>Expiry Date : </label>
-                <input type="date" class="form-control" ng-model="e_meds.expiry_date">
+                 <label>Date stock in : </label>
+                <input type="date" class="form-control" ng-model="e_meds.stock_in">
                 <br>
               </div>
               <div class="col-md-6">

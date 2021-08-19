@@ -1,7 +1,11 @@
 <div ng-controller="orderCtrl">
 <!-- <div> -->
     <!-- Page Content -->
+
     <div class="container">
+      <h1>Invoices</h1>
+<hr>
+
           <label for="id1">Search :</label>
           <input type="text" ng-model="search_order" id="id1"/>
         <br>
@@ -27,22 +31,10 @@
             <td align="center">{{item.address}}</td>
             <td align="center">{{item.date}}</td>
             <td align="center">{{item.orderno}}</td>
-           <!-- <td><img style=" width: 80px; height: 80px;" ng-src="{{item.img}}"/></td> -->
-<!--             <td align="center" class="hidden-print">
-            <button class='btn btn-info' ng-click='specific_transaction(item.tid)' data-toggle='modal' data-target='#appModal'><i class='fa fa-thumbs-up' style='font-size: 12px;'></i></button>
-                       <button class='btn btn-danger' ng-click='specific_transaction(item.tid)' data-toggle='modal' data-target='#disModal'><i class='fa fa-thumbs-down' style='font-size: 12px;'></i></button>
-            </td> -->
           </tr>
         </tbody>
       </table> 
-
-      <!-- </div> -->
-    <!-- </table> -->
-
-      </div>
-      <!-- <button ng-click="printToCart('printSectionId')" class="button">Print</button> -->
-
-    <!-- </div> -->
+    </div>
 
 
 <!-- Modal -->
@@ -111,8 +103,6 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-<!--          <button ng-if="!leave.abs || !leave.earned" type="button" class="btn btn-primary" ng-click="add_leave()">Save</button> -->
-         <!-- <button ng-if="!leave.abs" type="button" class="btn btn-danger" ng-click="add_leave()">Save</button> -->
       </div>
     </div>
 
@@ -127,44 +117,41 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Medicines Ordered</h4>
+        <h4 class="modal-title">Products Ordered</h4>
       </div>
       <div class="modal-body">
-        <!-- {{eid.eid}}asd -->
      <table class="table table-bordered">
         <thead class="thead-dark" style="background-color: #173F5F;
     color: white;">
           <tr>
           <th></th>
             <th>Description</th>
-            <th>Lot No.</th>
+            <!-- <th>Lot No.</th> -->
             <th>Quantity</th>
             <th>unit Price</th>
             <th>Discount</th>
             <th>Amount</th>
-            <!-- <th>Actions</th> -->
           </tr>
         </thead>
         <tbody>
           <tr ng-repeat="spec in spec_order">
-          <td align="center"><button class="btn btn-default" 
+          <td align="center"><button class="btn btn-danger" title="Remove item" 
           ng-click="ret_stock(spec.tid,spec.id,spec.item_description,spec.qty_issued,spec)">
           <i class="fa fa-times"></button></i></td>
               <td align="center">{{spec.item_description}}</td>
-              <td align="center">{{spec.lot_no}}</td>
-              <td align="center">{{spec.qty_issued}}</td>
-              <td align="center">{{spec.unit_cost}}</td>
+              <!-- <td align="center">{{spec.lot_no}}</td> -->
+              <td align="center">{{spec.qty_issued | number}}</td>
+              <td align="center">{{spec.unit_cost | number}}</td>
               <td align="center">{{spec.discount}}</td>
-              <td align="center">{{spec.total_amount}}</td>
+              <td align="center">{{spec.total_amount | number}}</td>
           </tr>
           <tr>
             <td></td>
             <td></td>
             <td></td>
             <td></td>
-            <td></td>
-            <td></td>
-            <td><b>{{o_tot}}</b></td>
+            <td>Total:</td>
+            <td><b>{{o_tot | number}}</b></td>
           </tr>
         </tbody>
       </table> 
@@ -176,41 +163,4 @@
 
   </div>
 </div>
-
-<div id="appModal" class="modal fade" role="dialog">
-  <div class="modal-dialog">
-
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Are you sure you want to <b>APPROVE</b>?</h4>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-info" data-dismiss="modal">Approve</button>
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-
-  </div>
-</div>
-
-<div id="disModal" class="modal fade" role="dialog">
-  <div class="modal-dialog">
-
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Are you sure you want to <b>DISAPPROVE</b>?</h4>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-dismiss="modal">Disapprove</button>
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-
-  </div>
-</div>
-
 </div>

@@ -70,20 +70,33 @@ class Report extends CI_Controller {
     public function daily_report1()
     {
         $_POST = json_decode(file_get_contents('php://input'),true);
-        $res = $this->leave_model->daily_report1($_POST['datefrom'], $_POST['dateto']);
+        $res = $this->leave_model->daily_report_stocks($_POST['datefrom'], $_POST['dateto']);
         echo json_encode($res);
     }
 
     public function daily_report_financial()
     {
         $_POST = json_decode(file_get_contents('php://input'),true);
-        // var_dump($_POST['eid']);
-        // $line = $_POST['re'];
-        // $fund = $_POST['fund_source'];
-        // $nf = new Date($_POST['datefrom']);
-        // $nt = new Date($_POST['dateto']);
+
         $res = $this->leave_model->daily_report_financial($_POST['datefrom'], $_POST['dateto']);
         // echo json_encode(date('Y-m-d',strtotime($_POST['dateto'] . "+1 days")));
+        echo json_encode($res);
+    }
+
+    public function monthly_report_financial()
+    {
+        $_POST = json_decode(file_get_contents('php://input'),true);
+
+        $res = $this->leave_model->monthly_report_financial($_POST['year']);
+        // echo json_encode(date('Y-m-d',strtotime($_POST['dateto'] . "+1 days")));
+        echo json_encode($res);
+    }
+
+    public function yearly_report_financial()
+    {
+
+        $res = $this->leave_model->yearly_report_financial();
+
         echo json_encode($res);
     }
 
@@ -100,11 +113,6 @@ class Report extends CI_Controller {
             $datefrom = '2022-01-01';
             $dateto = '2022-12-31';
         }
-        // var_dump($_POST['eid']);
-        // $line = $_POST['re'];
-        // $fund = $_POST['fund_source'];
-        // $q = $_POST['quarter'];
-        // $rp = $_POST['report'];
         $res = $this->leave_model->monthly_report_meds($datefrom,$dateto);
         echo json_encode($res);
     }
